@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: rgba(89, 19, 119, 0.578);
+        }
+
+        #cont {
+            margin: auto;
+            border-radius: 40px;
+            width: 400px;
+            height: 95vh;
+            background-color: rgb(238, 238, 238);
+            padding: 10px;
+            outline: 12px solid rgb(255, 255, 255);
+            outline-offset: -12px;
+            overflow: hidden;
+        }
+
+        #screen {
+            height: 100%;
+            background-color: rgb(238, 238, 238);
+            border-radius: 0 0 35px 35px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #screen2 {
+            height: 100%;
+            background-color: rgb(238, 238, 238);
+            border-radius: 0 0 35px 35px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #screen3 {
+            height: 90%;
+            background-color: rgb(238, 238, 238);
+            border-radius: 0 0 35px 35px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        #screen3 input {
+            text-align: center;
+            font-size: 30px;
+            height: 60px;
+            width: 250px;
+            border: 5px solid rgba(155, 43, 161, 0.397);
+            border-radius: 20px;
+        }
+
+        #screen3>div:last-child {
+            margin-top: 380px;
+            background-color: rgb(75, 175, 75);
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        #screen>div {
+            margin: 14px auto;
+        }
+
+        #screen2>div {
+            background-color: rgb(255, 255, 255);
+            border-radius: 15px;
+            height: 80px;
+            width: 90%;
+            margin: 9px auto;
+            display: flex;
+            align-items: center;
+            opacity: 0.5;
+        }
+
+        #screen2>div:first-child {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        #screen2>div>img {
+            height: 50%;
+            margin: 0 20px
+        }
+
+        #nav {
+            background-color: rgba(120, 22, 172, 0.64);
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #nav>img {
+            height: 50%;
+        }
+
+        .slide {
+            height: 140px;
+            width: 90%;
+            background-color: rgb(255, 255, 255);
+            margin-top: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide>img {
+            width: 100%;
+        }
+
+        .options {
+            width: 90%;
+            border-radius: 10px;
+            height: 80px;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .options>div {
+            opacity: 0.5;
+            margin: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+        }
+
+        .options>div:first-child {
+            opacity: 10;
+        }
+
+        .options>div:first-child:hover {
+            cursor: pointer;
+            background-color: rgb(247, 247, 247);
+            border-radius: 5px;
+        }
+
+        .options>div>img {
+            width: 70%;
+        }
+
+        .dummyOpt {
+            width: 90%;
+            border-radius: 10px;
+            height: 185px;
+            background-color: rgb(255, 255, 255);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .dummyOpt>div {
+            margin: 17px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(166, 166, 166, 0.275);
+            border-radius: 10px;
+        }
+
+        .dummySec {
+            width: 90%;
+            border-radius: 10px;
+            height: 150px;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .dummySec>div {
+            width: 27%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(166, 166, 166, 0.275);
+            border-radius: 7px;
+        }
+
+        #screen4 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        #nav4 {
+            padding-top: 20px;
+            background-color: rgb(67, 204, 67);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: larger;
+            font-weight: 500;
+            color: white;
+        }
+
+        #nav4>img {
+            height: 50px;
+            filter: invert(1);
+        }
+
+        #screen4>div {
+            margin: auto;
+            width: 400px;
+            overflow: hidden;
+        }
+
+        #screen4>div:nth-child(2) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #dummy1,
+        #dummy2,
+        #dummy3,
+        #dummy4 {
+            background-color: rgb(255, 255, 255);
+            margin: 10px auto;
+            width: 90%;
+            height: 80px;
+            border-radius: 7px;
+            opacity: 0.5;
+        }
+
+        #tranID {
+            border-radius: 7px;
+            width: 90%;
+            height: max-content;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #tranID>p {
+            margin-right: 10px;
+        }
+
+        #tranID>div {
+            margin-left: 10px;
+        }
+
+        #done {
+            background-color: rgb(132, 75, 175);
+            width: 100%;
+            text-align: center;
+            padding: 25px;
+            color: white;
+            font-weight: bold;
+            font-size: 25px;
+            margin-top: 50px;
+            cursor: pointer;
+        }
+        /*  */
+        #screen5 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        #nav5 {
+            width: 100%;
+            padding-top: 20px;
+            background-color: rgb(204, 67, 67);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: larger;
+            font-weight: 500;
+            color: white;
+        }
+
+        #nav5>img {
+            height: 50px;
+            filter: invert(1);
+        }
+        #notice{
+            color: gray;
+            margin-top: 100px;
+        }
+        #TryAgain{
+            background-color: rgb(140, 67, 204);
+            width: 100%;
+            text-align: center;
+            padding: 25px;
+            color: white;
+            font-weight: bold;
+            font-size: 25px;
+            cursor: pointer;
+            margin-top: 300px;
+        }
+        #amount::placeholder{
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cont">
+        <div id="nav"><img src="https://logos-download.com/wp-content/uploads/2021/01/PhonePe_Logo_full.png" alt="">
+        </div>
+        <div id="screen" style="display: inline;">
+            <div class="slide">
+                <img id="slide-img"
+                    src="https://cdn.grabon.in/gograbon/images/web-images/uploads/1618560404016/phonepe-offers.jpg">
+            </div>
+            <div class="options">
+                <div id="pay"><img src="pay.png" alt="">Pay</div>
+                <div><img src="bank.png" alt="">Bank</div>
+                <div><img src="money-withdrawal.png" alt="">Withdrawal</div>
+                <div><img src="receipt.png" alt="">Bills</div>
+            </div>
+            <div class="dummyOpt">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="dummySec">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <!-- contact -->
+        <div id="screen2" style="display: none;">
+            <div id="person"><img src="woman.png" alt=""><b>Mamma</b></div>
+            <div><img src="user.png" alt=""><b>Person 2</b></div>
+            <div><img src="user.png" alt=""><b>Person 3</b></div>
+            <div><img src="user.png" alt=""><b>Person 4</b></div>
+            <div><img src="user.png" alt=""><b>Person 5</b></div>
+            <div><img src="user.png" alt=""><b>Person 6</b></div>
+            <div><img src="user.png" alt=""><b>Person 7</b></div>
+            <div><img src="user.png" alt=""><b>Person 8</b></div>
+            <div><img src="user.png" alt=""><b>Person 9</b></div>
+            <div><img src="user.png" alt=""><b>Person 10</b></div>
+        </div>
+        <div id="screen3" style="display: none;">
+            <h2>Enter Amount</h2>
+            <div>
+                <input type="number" id="amount" placeholder="Dont Leave Me Empty">
+            </div>
+            <div id="makePayment">PAY</div>
+        </div>
+        <div id="screen4" style="display: none;">
+            <div id="nav4">
+                <img src="tick.png" alt="">
+                <p>Transaction Successful</p>
+            </div>
+            <div id="xyz">
+                <h2 id="amountDis">0000</h2>
+
+                <div id="tranID">
+                    <div>
+                        <p>Transaction ID</p>
+                        <p>AZND********56984</p>
+                    </div>
+                    <p style="color: purple; text-decoration: underline;">COPY</p>
+                </div>
+                <div id="dummy1"></div>
+                <div id="dummy2"></div>
+                <div id="done">DONE</div>
+            </div>
+        </div>
+        <div id="screen5" style="display: none;">
+            <div id="nav5">
+                <img src="failed.png" alt="">
+                <p>Transaction Failed</p>
+            </div>
+            <div id="notice">Bank Server Down :/</div>
+            <div id="TryAgain">TRY AGAIN</div>
+        </div>
+</body>
+
+</html>
+<script>
+    var i = 1;
+    setInterval(slider, 2500)
+    function slider() {
+        document.querySelector("#slide-img").setAttribute("src", slide[i]);
+        i++;
+        if (i == slide.length) {
+            i = 0;
+        }
+    }
+    document.querySelector("#pay").addEventListener("click", () => {
+        document.querySelector("#screen").style.display = "none"
+        document.querySelector("#screen2").style.display = "inline"
+    })
+
+    var slide = [
+        "https://cdn.grabon.in/gograbon/images/web-images/uploads/1618560404016/phonepe-offers.jpg",
+        "https://cdn.grabon.in/gograbon/images/web-images/uploads/1618560328157/phonepe-coupons.jpg",
+        "https://www.spycoupon.in/wp-content/uploads/2017/03/screenshot_20170327-152315.jpg",
+        "https://www.flashsaletricks.com/wp-content/uploads/2017/12/PhonePe_Gold_Purchase_Offer.jpg",
+        "https://images.freekaamaal.com/post_images/1570103260.png",
+    ]
+
+    document.querySelector("#person").addEventListener("click", () => {
+        document.querySelector("#screen2").style.display = "none";
+        document.querySelector("#screen3").style.display = "flex"
+    })
+
+
+    //PAYMENT
+    document.querySelector("#makePayment").addEventListener("click", () => {
+        var amount = document.querySelector("#amount").value;
+        if (amount != "") {
+            myFunc(+amount);
+        }
+    })
+
+    let transaction;
+    function myFunc(amount) {
+        a = amount;
+        let ifPayment = new Promise((res, rej) => {
+            var success = Math.floor(Math.random() * 2);
+            if (success == 1) {
+                res("SUCCESS")
+            } else {
+                rej("FAIL")
+            }
+        })
+        ifPayment.then((res) => {
+            document.querySelector("#nav").style.backgroundColor = "rgb(67, 204, 67, 0.462)"
+            document.querySelector("#amount").value = ""
+            document.querySelector("#screen3").style.display = "none"
+            document.querySelector("#amountDis").innerHTML = "$"+a
+            document.querySelector("#screen4").style.display = "flex"
+        }).catch((rej) => {
+            document.querySelector("#nav").style.backgroundColor = "rgb(204, 67, 67, 0.462)"
+            document.querySelector("#screen3").style.display = "none";
+            document.querySelector("#screen5").style.display = "flex"
+        })
+    }
+    document.querySelector("#done").addEventListener("click",()=>{
+        document.querySelector("#nav").style.backgroundColor = "rgba(120, 22, 172, 0.64)"
+        document.querySelector("#screen4").style.display = "none"
+        document.querySelector("#screen").style.display = "inline"
+    })
+    document.querySelector("#TryAgain").addEventListener("click",()=>{
+        document.querySelector("#nav").style.backgroundColor = "rgba(120, 22, 172, 0.64)"
+        document.querySelector("#screen5").style.display = "none"
+        document.querySelector("#screen3").style.display = "flex"
+    })
+</script>
